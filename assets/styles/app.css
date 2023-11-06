@@ -27,6 +27,7 @@ img {
 article {
     --pico-block-spacing-horizontal: 0;
     --pico-block-spacing-vertical: 0;
+
     & > main {
         display: flex;
         justify-content: space-between;
@@ -41,6 +42,21 @@ article {
         .price {
             color: var(--pico-primary);
             padding-block-end: var(--pico-spacing);
+        }
+
+        .urgent {
+            height: 1.8rem;
+            &:not(:empty) {
+                display: grid;
+                place-items: center;
+                padding: 0 0.8rem;
+                font-size: 0.8rem; 
+                border-radius: 1rem;
+                
+                width: fit-content;
+                background-color: var(--pico-text-selection-color);
+                color: var(--pico-primary);
+            }
         }
         .date {
             color:var(--neutral);

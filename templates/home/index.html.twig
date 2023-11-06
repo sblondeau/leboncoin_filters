@@ -16,7 +16,7 @@
 					<main>
 						<h2>{{ product.name }}</h2>
 						<div class="price">{{ product.price }}€</div>
-						<div>{{ product.isUrgent ? 'urgent' }}</div>
+						<div class="urgent">{{ product.isUrgent ? 'urgent' }}</div>
 						<div class="date">{{ product.updatedAt|date('d/m/Y') }}</div>
 					</main>
 				</article>
