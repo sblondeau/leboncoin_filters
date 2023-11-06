@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Products
+{% endblock %}
+
+{% block body %}
+	<header class="container-fluid">
+		<h1>Products</h1>
+	</header>
+
+	<main class="container">
+		<section class="products">
+			{% for product in products %}
+				<article>
+					<img src="https://placeholder.com/300x200" alt="">
+					<main>
+						<h2>{{ product.name }}</h2>
+						<div class="price">{{ product.price }}€</div>
+						<div>{{ product.isUrgent ? 'urgent' }}</div>
+						<div class="date">{{ product.updatedAt|date('d/m/Y') }}</div>
+					</main>
+				</article>
+			{% endfor %}
+		</section>
+
+	</main>
+{% endblock %}

@@ -1,0 +1,50 @@
+
+:root[data-theme=light] {
+  --pico-text-selection-color: rgba(244, 93, 44, 0.25);
+  --pico-primary: #bd3c13;
+  --pico-primary-background: #d24317;
+  --pico-primary-underline: rgba(189, 60, 19, 0.5);
+  --pico-primary-hover: #942d0d;
+  --pico-primary-hover-background: #bd3c13;
+  --pico-primary-focus: rgba(244, 93, 44, 0.25);
+  --pico-primary-inverse: #fff;
+  --neutral: #786f6d;
+}
+
+
+
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(360px, 100%), 1fr));
+    gap:var(--pico-spacing);
+}
+
+img {
+    width: 100%;
+}
+
+article {
+    --pico-block-spacing-horizontal: 0;
+    --pico-block-spacing-vertical: 0;
+    & > main {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+
+        padding: var(--pico-spacing);
+        h2 {
+            --pico-font-size: 1.2rem;
+            --pico-font-weight: 500;
+            --pico-typography-spacing-vertical: 0;
+        }
+        .price {
+            color: var(--pico-primary);
+            padding-block-end: var(--pico-spacing);
+        }
+        .date {
+            color:var(--neutral);
+            font-size: 0.8rem;
+        }
+    }
+}
