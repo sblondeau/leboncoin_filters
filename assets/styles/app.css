@@ -54,6 +54,7 @@ article {
     grid-template-columns: 1fr 3fr;
     width: max(350px, 70%);
     border:1px solid var(--neutral-light);
+    position: relative;
     img { 
         min-height: 100%;
         width: 100%;
@@ -71,22 +72,22 @@ article {
             --pico-typography-spacing-vertical: 0;
         }
         .price {
-            color: var(--pico-primary);
             padding-block-end: var(--pico-spacing);
+            --pico-font-weight: 500;
         }
 
         .urgent {
-            height: 1.8rem;
             &:not(:empty) {
-                display: grid;
-                place-items: center;
-                padding: 0 0.8rem;
-                font-size: 0.8rem; 
-                border-radius: 1rem;
-                
+                position: absolute;
+                height: fit-content;
+                inset: 0.5rem;
+                padding: 0.2rem 0.3rem;
+                font-size: 0.7rem; 
+                border-radius: 0.7rem;
                 width: fit-content;
-                background-color: var(--pico-text-selection-color);
-                color: var(--pico-primary);
+                background-color: var(--pico-primary-inverse);
+                border:1px solid var(--pico-primary);
+                color: var(--pico-primary); 
             }
         }
         .date {
