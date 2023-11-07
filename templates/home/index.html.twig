@@ -4,12 +4,18 @@
 {% endblock %}
 
 {% block body %}
-	<header class="container-fluid">
-		<h1>Products</h1>
-	</header>
 
 	<main class="container">
+
+		<section class="filters">
+			<button class="outline">Localisation</button>
+			<button class="outline">Prix</button>
+			<button class="outline">Filtres</button>
+		</section>
+
 		<section class="products">
+		<h1>Annonces</h1>
+		<h2>{{ products|length}} annonces</h2>
 			{% for product in products %}
 				<article>
 					<img src="https://placeholder.com/300x200" alt="">
