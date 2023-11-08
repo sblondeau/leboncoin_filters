@@ -13,22 +13,7 @@
 			<button class="outline">Filtres</button>
 		</section>
 
-		<section class="products">
-		<h1>Annonces</h1>
-		<h2>{{ products|length}} annonces</h2>
-			{% for product in products %}
-				<article>
-					<img src="https://placeholder.com/300x200" alt="">
-					<main>
-						<h2>{{ product.name }}</h2>
-						<div class="price">{{ product.price }}€</div>
-						<div class="urgent">{{ product.isUrgent ? 'urgent' }}</div>
-						<div class="date">{{ product.city }}</div>
-						<div class="date">{{ product.updatedAt|date('d/m/Y') }}</div>
-					</main>
-				</article>
-			{% endfor %}
-		</section>
+		<twig:ProductCards :searchDto="searchDto"></twig:ProductCards>
 
 	</main>
 {% endblock %}

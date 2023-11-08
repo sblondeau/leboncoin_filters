@@ -1,0 +1,13 @@
+<div{{attributes}}>
+	{{ form_start(form, {
+        attr: {
+            'data-action': 'live#action',
+            'data-action-name': 'prevent|save'
+        }
+    }) }}
+	<div role="search">
+		{{ form_widget(form.search) }}
+		<button>Rechercher</button>
+	</div>
+	{{ form_end(form) }}
+</div>
