@@ -6,11 +6,6 @@
 {% block body %}
 
 	<main class="container">
-
-		<twig:FilterButtons></twig:FilterButtons>
-
-		<twig:FilterForm :searchDto="searchDto"></twig:FilterForm>
-		<twig:ProductCards :searchDto="searchDto"></twig:ProductCards>
-
+		<twig:FilterProducts :searchDto="searchDto"></twig:FilterProducts>
 	</main>
 {% endblock %}

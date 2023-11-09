@@ -11,16 +11,33 @@
         }) }}
 		<fieldset role="group">
 			<legend>Prix en €</legend>
-			{{ form_row(form.minPrice) }}
-			{{ form_row(form.maxPrice) }}
+			{{ form_row(form.minPrice, {
+				attr: {
+					'data-action': 'live#action',
+					'data-action-name': 'prevent|debounce(300)|update'
+				}
+			}) }}
+			{{ form_row(form.maxPrice, {
+				attr: {
+					'data-action': 'live#action',
+					'data-action-name': 'prevent|debounce(300)|update'
+				}
+			}) }}
 		</fieldset>
 		<fieldset>
 			<legend>Annonces urgentes</legend>
-			{{ form_widget(form.isUrgent, {attr: {role: 'switch'}}) }}
+			{{ form_widget(form.isUrgent, {
+				attr: {
+					role: 'switch',
+					'data-action': 'live#action',
+					'data-action-name': 'prevent|update'
+				}
+			}) }}
 			{{ form_label(form.isUrgent) }}
 		</fieldset>
 
-		<button>Recherche</button>
+		<button class="outline" data-action="live#action" data-action-name="prevent|reset">Tout Effacer</button>
+		<button>Recherche ({{ results }})</button>
 		{{ form_end(form) }}
 	</aside>
 </div>
