@@ -1,0 +1,26 @@
+<div {{ attributes }} class="filter-wrapper {{ visible ? 'visible' }}">
+	<a class="filter-backdrop" data-action="live#action" data-action-name="prevent|save"></a>
+	<aside class="filter-form">
+		<h2>Filtres</h2>
+		<hr>
+		{{ form_start(form, {
+            attr: {
+                'data-action': 'live#action',
+                'data-action-name': 'prevent|save'
+            }
+        }) }}
+		<fieldset role="group">
+			<legend>Prix en €</legend>
+			{{ form_row(form.minPrice) }}
+			{{ form_row(form.maxPrice) }}
+		</fieldset>
+		<fieldset>
+			<legend>Annonces urgentes</legend>
+			{{ form_widget(form.isUrgent, {attr: {role: 'switch'}}) }}
+			{{ form_label(form.isUrgent) }}
+		</fieldset>
+
+		<button>Recherche</button>
+		{{ form_end(form) }}
+	</aside>
+</div>

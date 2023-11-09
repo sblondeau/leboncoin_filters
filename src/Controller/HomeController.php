@@ -14,6 +14,8 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(#[MapQueryString()] ?SearchDto $searchDto = null): Response
     {
+        $searchDto ??= new SearchDto();
+        
         return $this->render('home/index.html.twig', [
             'searchDto' => $searchDto,
         ]);

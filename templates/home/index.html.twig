@@ -7,12 +7,9 @@
 
 	<main class="container">
 
-		<section class="filters">
-			<button class="outline">Localisation</button>
-			<button class="outline">Prix</button>
-			<button class="outline">Filtres</button>
-		</section>
+		<twig:FilterButtons></twig:FilterButtons>
 
+		<twig:FilterForm :searchDto="searchDto"></twig:FilterForm>
 		<twig:ProductCards :searchDto="searchDto"></twig:ProductCards>
 
 	</main>
