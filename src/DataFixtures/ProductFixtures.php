@@ -2,10 +2,12 @@
 
 namespace App\DataFixtures;
 
+use Faker\Factory;
 use App\Entity\Product;
+use App\Services\Localisator;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Faker\Factory;
+
 
 class ProductFixtures extends Fixture
 {
@@ -14,6 +16,11 @@ class ProductFixtures extends Fixture
         'Lille', 'Rennes', 'Brest', 'Bordeaux', 'Toulouse', 'Perpignan', 'Marseille', 'Nice', 'Metz', 'Chartres',
         'Grenoble', 'Lyon', 'Paris', 'Orléans', 'Limoges', 'Dijon', 'Nancy', 'Strasbourg', 'Reims', 'Nantes'
     ];
+
+    public function __construct(private Localisator $localisator)
+    {
+    }
+
     public function load(ObjectManager $manager): void
     {
         $faker = Factory::create();
@@ -25,7 +32,11 @@ class ProductFixtures extends Fixture
                 ->setIsUrgent($faker->boolean(10));
             $city = $faker->randomElement(self::CITIES);
             $product->setCity($city);
-
+            if($i % 50 === 0) {
+                sleep(1);
+            }
+            [$longitude, $latitude] = $this->localisator->getLocalisation($city);
+            $product->setLongitude($longitude)->setLatitude($latitude);
             $manager->persist($product);
         }
 

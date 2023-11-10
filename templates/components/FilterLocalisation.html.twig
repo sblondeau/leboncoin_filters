@@ -1,0 +1,18 @@
+<div{{attributes}}>
+	{{ form_start(form) }}
+	<details class="dropdown localisation">
+		<summary>Localisation</summary>
+		<ul>
+			<li>
+				{{ form_row(form.address) }}</li>
+			<li>
+				{{ form_label(form.radius, 'Rayon - ' ~ searchDto.radius ~ 'km') }}
+				{{ form_widget(form.radius) }}
+			</li>
+			<li>
+				<button>Valider</button>
+			</li>
+		</ul>
+	</details>
+	{{ form_end(form) }}
+</div>

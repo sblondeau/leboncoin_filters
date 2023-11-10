@@ -17,6 +17,13 @@ class SearchDto
     #[Assert\Positive]
     public ?float $maxPrice = null;
 
+    public ?string $address = null;
+
+    public ?int $radius = 5;
+
+    public ?float $latitude = null;
+    public ?float $longitude = null;
+
     public bool $isUrgent = false;
 
     public function generateQueryParameters(): array
@@ -26,6 +33,10 @@ class SearchDto
             'minPrice' => $this->minPrice,
             'maxPrice' => $this->maxPrice,
             'isUrgent' => $this->isUrgent,
+            'address' => $this->address,
+            'radius' => $this->radius,
+            'latitude' => $this->latitude,
+            'longitude' => $this->longitude,
         ];
     }
 }

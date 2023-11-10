@@ -40,6 +40,11 @@ nav {
 .filters {
     display: flex;
     gap: var(--pico-spacing);
+    & .filter-buttons {
+        display: flex;
+        gap: var(--pico-spacing);
+      
+    }
 }
 
 .products {
@@ -143,4 +148,8 @@ article {
     to {
         translate: 0;
     }
+}
+
+.localisation {
+    width: 360px;
 }

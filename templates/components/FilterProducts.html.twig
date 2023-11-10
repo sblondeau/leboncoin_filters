@@ -1,5 +1,8 @@
-<div{{ attributes }}>
+<div{{attributes}}>
+	<section class="filters">
+		<twig:FilterLocalisation :searchDto="searchDto" :results="results"></twig:FilterLocalisation>
 		<twig:FilterButtons :searchDto="searchDto"></twig:FilterButtons>
-		<twig:FilterForm :searchDto="searchDto" :results="results"></twig:FilterForm>
-		<twig:ProductCards :products="products" :results="results"></twig:ProductCards>
+	</section>
+	<twig:FilterForm :searchDto="searchDto" :results="results"></twig:FilterForm>
+	<twig:ProductCards :products="products" :results="results"></twig:ProductCards>
 </div>

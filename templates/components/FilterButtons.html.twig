@@ -1,23 +1,24 @@
-<div{{attributes}}>
-	<section class="filters">
+<div{{attributes}} class="filter-buttons">
 
-		<button class="outline">Localisation</button>
-		<button class="outline" data-action="live#emit" data-event="showFilter">
-			{% if searchDto.minPrice and searchDto.maxPrice is null %}
-				min
-				{{ searchDto.minPrice }}€
-			{% elseif searchDto.maxPrice and searchDto.minPrice is null %}
-				{{ searchDto.maxPrice }}€ max
-			{% elseif searchDto.maxPrice and searchDto.minPrice %}
-				{{ searchDto.minPrice }}
-				-
-				{{ searchDto.maxPrice }}€
-			{% else %}
-				Prix
-			{% endif %}
-		</button>
-		<button class="outline" data-action="live#emit" data-event="showFilter">
-			Filtres
-		</button>
-	</section>
+		<details class="dropdown" data-action="live#emit" data-event="showFilter">
+			<summary>
+				{% if searchDto.minPrice and searchDto.maxPrice is null %}
+					min
+					{{ searchDto.minPrice }}€
+				{% elseif searchDto.maxPrice and searchDto.minPrice is null %}
+					{{ searchDto.maxPrice }}€ max
+				{% elseif searchDto.maxPrice and searchDto.minPrice %}
+					{{ searchDto.minPrice }}
+					-
+					{{ searchDto.maxPrice }}€
+				{% else %}
+					Prix
+				{% endif %}
+			</summary>
+		</details>
+		<details class="dropdown" data-action="live#emit" data-event="showFilter">
+			<summary>
+				Filtres
+			</summary>
+		</details>
 </div>
