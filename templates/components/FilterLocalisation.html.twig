@@ -1,16 +1,40 @@
 <div{{attributes}}>
-	{{ form_start(form) }}
+	{{ form_start(form, {
+		attr: {
+			'data-action': 'live#action',
+			'data-action-name': 'prevent|save'
+		}
+	}) }}
 	<details class="dropdown localisation">
 		<summary>Localisation</summary>
 		<ul>
 			<li>
-				{{ form_row(form.address) }}</li>
-			<li>
-				{{ form_label(form.radius, 'Rayon - ' ~ searchDto.radius ~ 'km') }}
-				{{ form_widget(form.radius) }}
+				<div class="input-city">
+					{{ form_row(form.address, {
+					attr: {
+						'data-action': 'live#action',
+						'data-action-name': 'prevent|debounce(300)|searchCity'
+					}
+				}) }}
+
+					<div class="cities">
+						{%- for city in cities %}
+							<button class="outline" data-action="live#action" data-action-name="prevent|selectCity(city={{city}})">{{ city}}</button>
+						{% endfor -%}
+					</div>
+				</div>
 			</li>
 			<li>
-				<button>Valider</button>
+				{{ form_label(form.radius, 'Rayon - ' ~ searchDto.radius ~ 'km') }}
+				{{ form_widget(form.radius, {
+				attr: {
+					'data-action': 'live#action',
+					'data-action-name': 'prevent|update'
+				}
+			}) }}
+			</li>
+			<li>
+				<button>Valider ({{ results }})</button>
 			</li>
 		</ul>
 	</details>

@@ -17,11 +17,16 @@ class LocalisationType extends AbstractType
             ->add('address', TextType::class, [
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Choisir une localisation'
+                    'placeholder' => 'Choisir une localisation',
+                    'autocomplete' => 'off'
                 ],
             ])
             ->add('radius', RangeType::class, [
                 'required' => false,
+                'attr' => [
+                    'min' => 0,
+                    'max' => 200,
+                ]
             ])
         ;
     }

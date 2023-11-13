@@ -1,10 +1,11 @@
 <?php
 
 namespace App\DTO;
+use App\Services\Localisable;
 use Symfony\Component\Validator\Constraints as Assert;
 
 
-class SearchDto
+class SearchDto implements Localisable
 {
     public ?string $search = null;
 
@@ -38,5 +39,21 @@ class SearchDto
             'latitude' => $this->latitude,
             'longitude' => $this->longitude,
         ];
+    }
+
+    /**
+     * Get the value of latitude
+     */
+    public function getLatitude(): ?float
+    {
+        return $this->latitude;
+    }
+
+    /**
+     * Get the value of longitude
+     */
+    public function getLongitude(): ?float
+    {
+        return $this->longitude;
     }
 }

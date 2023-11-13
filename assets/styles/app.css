@@ -40,10 +40,11 @@ nav {
 .filters {
     display: flex;
     gap: var(--pico-spacing);
+
     & .filter-buttons {
         display: flex;
         gap: var(--pico-spacing);
-      
+
     }
 }
 
@@ -152,4 +153,21 @@ article {
 
 .localisation {
     width: 360px;
+
+    & .input-city {
+        position: relative;
+
+        & .cities:not(:empty) {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            background-color: var(--pico-primary-inverse);
+            border-radius: 4px;
+            width: 100%;
+            max-height: 300px;
+            overflow-y: auto;
+            padding: var(--pico-spacing);
+            gap: 0.2rem;
+        }
+    }
 }
