@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
+use Exception;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Component\HttpClient\Exception\ClientException;
 
 class Localisator
 {
@@ -14,7 +16,7 @@ class Localisator
 
     public function getLocalisation(?string $address): array
     {
-    
+
         $response = $this->client->request('GET', self::BASE_URL, [
             'query' => [
                 'q' => $address,
@@ -25,23 +27,25 @@ class Localisator
     }
 
 
-    public function getCities(?string $address)
+    public function getCities(?string $address): array
     {
         $cities = [];
-        if ($address) {
-            $response = $this->client->request('GET', self::BASE_URL, [
-                'query' => [
-                    'q' => $address,
-                    'type' => 'municipality',
-                    'limit' => 10,
-                    'autocomplete' => 1,
-                ],
-            ]);
+        if (strlen($address) > 2) {
+            if ($address) {
+                $response = $this->client->request('GET', self::BASE_URL, [
+                    'query' => [
+                        'q' => $address,
+                        'type' => 'municipality',
+                        'limit' => 10,
+                        'autocomplete' => 1,
+                    ],
+                ]);
 
 
-            $results = $response->toArray()['features'];
-            foreach ($results as $result) {
-                $cities[] = $result['properties']['municipality'];
+                $results = $response->toArray()['features'];
+                foreach ($results as $result) {
+                    $cities[] = $result['properties']['municipality'];
+                }
             }
         }
         return array_unique($cities);

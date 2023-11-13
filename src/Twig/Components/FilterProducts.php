@@ -49,12 +49,14 @@ final class FilterProducts
     private function searchProducts(): void
     {
         $this->products = $this->productRepository->search($this->searchDto);
+        if ($this->searchDto->getLatitude() && $this->searchDto->longitude) {
+            $this->products = array_filter(
+                $this->products,
+                fn ($product) => $this->distanceCalculator->getDistance($this->searchDto, $product) <= $this->searchDto->radius
+            );
+        }
 
-        $this->products = array_filter(
-            $this->products, 
-            fn($product) => $this->distanceCalculator->getDistance($this->searchDto, $product) <= $this->searchDto->radius
-        );
-
+        
         $this->results = count($this->products);
     }
 }
